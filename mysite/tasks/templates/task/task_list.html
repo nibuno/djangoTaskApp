@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.content }} {{ item.created_at }} {{ item.updated_at }}</li>
+            <form action="{% url 'todo_delete' item.id %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">削除</button>
+            </form>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'task_create' %}">Taskを作成する</a>
+</body>
+</html>
