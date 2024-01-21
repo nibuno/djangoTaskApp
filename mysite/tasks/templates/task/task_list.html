@@ -7,11 +7,12 @@
     <h1>Task List</h1>
     <ul>
         {% for item in items %}
-            <li>{{ item.content }} {{ item.created_at }} {{ item.updated_at }}</li>
+            <li>{{ item.content }} {{ item.created_at }} {{ item.updated_at }}
             <form action="{% url 'todo_delete' item.id %}" method="post" style="display: inline;">
                 {% csrf_token %}
                 <button type="submit">削除</button>
             </form>
+            </li>
         {% endfor %}
     </ul>
     <a href="{% url 'task_create' %}">Taskを作成する</a>
