@@ -5,3 +5,4 @@ venv
 /.idea/djangoTaskApp.iml
 /.idea/misc.xml
 /.idea/modules.xml
+db.sqlite3
