@@ -1,4 +1,4 @@
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, DeleteView
 from django.urls import reverse_lazy
@@ -11,7 +11,8 @@ class TaskListView(ListView):
     context_object_name = 'items'
 
 
-class TaskCreateView(CreateView):
+class TaskCreateView(LoginRequiredMixin, CreateView):
+    login_url = '/login/'
     model = Task
     fields = ['content']
     template_name = 'task/task_create.html'
