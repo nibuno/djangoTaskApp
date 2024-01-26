@@ -19,7 +19,8 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('task_list')
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = '/login/'
     model = Task
     success_url = reverse_lazy('task_list')
 
