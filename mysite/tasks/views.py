@@ -18,6 +18,14 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'task/task_create.html'
     success_url = reverse_lazy('task_list')
 
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            form.instance.created_user = self.request.user
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     login_url = '/login/'
