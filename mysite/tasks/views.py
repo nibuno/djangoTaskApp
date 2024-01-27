@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from .models import Task
 
@@ -34,3 +34,11 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+
+class TaskEditView(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    model = Task
+    fields = ['content']
+    template_name = 'task/task_edit.html'
+    success_url = reverse_lazy('task_list')
