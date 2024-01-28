@@ -22,6 +22,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         form = self.get_form()
         if form.is_valid():
             form.instance.created_user = self.request.user
+            form.instance.updated_user = self.request.user
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
@@ -42,3 +43,14 @@ class TaskEditView(LoginRequiredMixin, UpdateView):
     fields = ['content']
     template_name = 'task/task_edit.html'
     success_url = reverse_lazy('task_list')
+
+    def form_valid(self, form):
+        task = form.save(commit=False)
+
+        # 作成者は変更しない
+        current_task = Task.objects.get(pk=self.kwargs['pk'])
+        task.created_user = current_task.created_user
+
+        task.updated_user = self.request.user
+        task.save()
+        return super().form_valid(form)
