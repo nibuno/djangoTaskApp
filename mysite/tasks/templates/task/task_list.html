@@ -8,6 +8,7 @@
     <ul>
         {% for item in items %}
             <li>{{ item.content }} {{ item.created_at }} {{ item.updated_at }} {{ item.created_user }}
+            <a href="{% url 'task_edit' item.id %}">編集</a>
             <form action="{% url 'task_delete' item.id %}" method="post" style="display: inline;">
                 {% csrf_token %}
                 <button type="submit">削除</button>
