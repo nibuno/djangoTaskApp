@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from .models import Task
@@ -54,3 +55,9 @@ class TaskEditView(LoginRequiredMixin, UpdateView):
         task.updated_user = self.request.user
         task.save()
         return super().form_valid(form)
+
+
+class TaskDetailView(LoginRequiredMixin, DetailView):
+    login_url = '/login/'
+    model = Task
+    template_name = 'task/task_detail.html'
