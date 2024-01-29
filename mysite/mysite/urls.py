@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("task/", include("tasks.urls")),
     path("login/", views.LoginView.as_view(), name="login"),
+    # TODO: TOPページを作成して、TOPページへのリダイレクトを設定する
+    path("logout/", views.LogoutView.as_view(next_page="task_list"), name="logout"),
 ]
