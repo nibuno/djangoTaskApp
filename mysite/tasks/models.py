@@ -23,3 +23,6 @@ class Task(models.Model):
     created_at = models.DateTimeField("投稿日", auto_now_add=True)
     updated_at = models.DateTimeField("更新日", auto_now=True)
 
+    class Meta:
+        db_table = 'task'
+
