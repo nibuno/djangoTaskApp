@@ -17,6 +17,9 @@
             </li>
         {% endfor %}
     </ul>
+    {% if tasks|length == 0 %}
+        <p>Taskはありません</p>
+    {% endif %}
     <a href="{% url 'task_create' %}">Taskを作成する</a>
 </body>
 </html>
