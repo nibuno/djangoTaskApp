@@ -6,7 +6,7 @@
 <body>
     <h1>Task Detail</h1>
     <ul>
-        <li>{{ task.title }} {{ task.content }} {{ task.created_at }} {{ task.updated_at }} {{ task.created_user }} {{ task.updated_user }}
+        <li>{{ task.title }} {{ task.content }} {{ task.limit_date }} {{ task.created_at }} {{ task.updated_at }} {{ task.created_user }} {{ task.updated_user }}
         <a href="{% url 'task_edit' task.id %}">編集</a>
         <form action="{% url 'task_delete' task.id %}" method="post" style="display: inline;">
             {% csrf_token %}
