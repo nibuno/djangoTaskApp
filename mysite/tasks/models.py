@@ -16,6 +16,7 @@ class Task(models.Model):
         on_delete=models.PROTECT,
         related_name="created_user",
     )
+    limit_date = models.DateField(verbose_name="期限", blank=True, null=True)
     updated_user = models.ForeignKey(
         to="auth.User",
         on_delete=models.PROTECT,
