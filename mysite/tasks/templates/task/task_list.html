@@ -7,7 +7,7 @@
     <h1>Task List</h1>
     <ul>
         {% for task in tasks %}
-            <li>{{ task.title }}{{ task.content }}
+            <li>{{ task.title }}
             <a href="{% url 'task_detail' task.id %}">詳細</a>
             <a href="{% url 'task_edit' task.id %}">編集</a>
             <form action="{% url 'task_delete' task.id %}" method="post" style="display: inline;">
