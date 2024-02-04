@@ -7,7 +7,6 @@ class Task(models.Model):
 
     今後、以下のカラムが必要だとは思っているが、まず必要最低限を準備する。
     - ステータス
-    - 期限
     """
     title = models.CharField("タイトル", max_length=100)
     content = models.TextField("本文", blank=True)
