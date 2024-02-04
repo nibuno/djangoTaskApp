@@ -20,6 +20,9 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('task_list')
 
     def post(self, request, *args, **kwargs):
+        # NOTE: これを設定しないと、self.form_invalid(form)でエラーが発生する
+        #       どういう風にすべきなのか、このままで良いのかは調査する
+        self.object = None
         form = self.get_form()
         if form.is_valid():
             form.instance.created_user = self.request.user
