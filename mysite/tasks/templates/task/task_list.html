@@ -9,6 +9,7 @@
         {% for task in tasks %}
             <li>
                 <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
+                <p>{{ task.get_status_display }}</p>
             </li>
         {% endfor %}
     </ul>
