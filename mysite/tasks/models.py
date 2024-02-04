@@ -1,15 +1,14 @@
 from django.contrib import auth
 from django.db import models
 
+from .statuses import STATUS_CHOICES
+
 
 class Task(models.Model):
-    """タスクモデル
-
-    今後、以下のカラムが必要だとは思っているが、まず必要最低限を準備する。
-    - ステータス
-    """
+    """タスクモデル"""
     title = models.CharField("タイトル", max_length=100)
     content = models.TextField("本文", blank=True)
+    status = models.IntegerField("ステータス", choices=STATUS_CHOICES, default=0)
     created_user = models.ForeignKey(
         to="auth.User",
         on_delete=models.PROTECT,
