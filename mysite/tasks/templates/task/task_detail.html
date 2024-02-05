@@ -1,9 +1,12 @@
+{% extends "base.html" %}
+
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <title>Task Detail</title>
+    <title>{% block title %}Task詳細{% endblock %}</title>
 </head>
 <body>
+{% block content %}
     <h1>Task Detail</h1>
     <ul>
         <li>{{ task.title }} {{ task.content }} {{ task.limit_date }} {{ task.created_at }} {{ task.updated_at }} {{ task.created_user }} {{ task.updated_user }}
@@ -15,5 +18,6 @@
         </li>
     </ul>
     <a href="{% url 'task_list' %}">一覧画面へ戻る</a>
+{% endblock %}
 </body>
 </html>
