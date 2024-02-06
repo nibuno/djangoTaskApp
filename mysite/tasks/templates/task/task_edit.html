@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <title>{% block title %}Task編集{% endblock %}</title>
-</head>
-<body>
+{% block title %}Task編集{% endblock %}
 {% block content %}
     <h1>Edit Task Item</h1>
     <form method="post">
@@ -15,5 +10,3 @@
     </form>
     <a href="{% url 'task_list' %}">TaskListに戻る</a>
 {% endblock %}
-</body>
-</html>
