@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <title>{% block title %}Task一覧{% endblock %}</title>
-</head>
-<body>
+{% block title %}Task一覧{% endblock %}
 {% block content %}
     <h1>Task List</h1>
     <ul>
@@ -21,5 +16,3 @@
     {% endif %}
     <a href="{% url 'task_create' %}">Taskを作成する</a>
 {% endblock %}
-</body>
-</html>
