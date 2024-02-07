@@ -6,19 +6,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tasks', '0001_initial'),
+        ("tasks", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='task',
-            name='title',
-            field=models.CharField(default='タイトル', max_length=100, verbose_name='タイトル'),
+            model_name="task",
+            name="title",
+            field=models.CharField(
+                default="タイトル", max_length=100, verbose_name="タイトル"
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='task',
-            name='content',
-            field=models.TextField(blank=True, verbose_name='本文'),
+            model_name="task",
+            name="content",
+            field=models.TextField(blank=True, verbose_name="本文"),
         ),
     ]

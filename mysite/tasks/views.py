@@ -8,16 +8,16 @@ from .models import Task
 
 class TaskListView(ListView):
     model = Task
-    template_name = 'task/task_list.html'
-    context_object_name = 'tasks'
+    template_name = "task/task_list.html"
+    context_object_name = "tasks"
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
-    login_url = '/login/'
+    login_url = "/login/"
     model = Task
-    fields = ['title', 'content', 'limit_date', 'status']
-    template_name = 'task/task_create.html'
-    success_url = reverse_lazy('task_list')
+    fields = ["title", "content", "limit_date", "status"]
+    template_name = "task/task_create.html"
+    success_url = reverse_lazy("task_list")
 
     def post(self, request, *args, **kwargs):
         # NOTE: これを設定しないと、self.form_invalid(form)でエラーが発生する
@@ -33,26 +33,26 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
-    login_url = '/login/'
+    login_url = "/login/"
     model = Task
-    success_url = reverse_lazy('task_list')
+    success_url = reverse_lazy("task_list")
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
 
 
 class TaskEditView(LoginRequiredMixin, UpdateView):
-    login_url = '/login/'
+    login_url = "/login/"
     model = Task
-    fields = ['title', 'content', 'limit_date', 'status']
-    template_name = 'task/task_edit.html'
-    success_url = reverse_lazy('task_list')
+    fields = ["title", "content", "limit_date", "status"]
+    template_name = "task/task_edit.html"
+    success_url = reverse_lazy("task_list")
 
     def form_valid(self, form):
         task = form.save(commit=False)
 
         # 作成者は変更しない
-        current_task = Task.objects.get(pk=self.kwargs['pk'])
+        current_task = Task.objects.get(pk=self.kwargs["pk"])
         task.created_user = current_task.created_user
 
         task.updated_user = self.request.user
@@ -61,6 +61,6 @@ class TaskEditView(LoginRequiredMixin, UpdateView):
 
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
-    login_url = '/login/'
+    login_url = "/login/"
     model = Task
-    template_name = 'task/task_detail.html'
+    template_name = "task/task_detail.html"

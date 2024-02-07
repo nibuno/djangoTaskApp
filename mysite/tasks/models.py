@@ -6,9 +6,12 @@ from .statuses import STATUS_CHOICES
 
 class Task(models.Model):
     """タスクモデル"""
+
     title = models.CharField("タイトル", max_length=100)
     content = models.TextField("本文", blank=True)
-    status = models.IntegerField(verbose_name="ステータス", choices=STATUS_CHOICES, default=0)
+    status = models.IntegerField(
+        verbose_name="ステータス", choices=STATUS_CHOICES, default=0
+    )
     created_user = models.ForeignKey(
         to="auth.User",
         on_delete=models.PROTECT,
@@ -24,5 +27,4 @@ class Task(models.Model):
     updated_at = models.DateTimeField(verbose_name="更新日", auto_now=True)
 
     class Meta:
-        db_table = 'task'
-
+        db_table = "task"

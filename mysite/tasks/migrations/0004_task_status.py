@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tasks', '0003_task_limit_date'),
+        ("tasks", "0003_task_limit_date"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='task',
-            name='status',
-            field=models.IntegerField(choices=[(0, '未着手'), (1, '進行中'), (2, '完了')], default=0, verbose_name='ステータス'),
+            model_name="task",
+            name="status",
+            field=models.IntegerField(
+                choices=[(0, "未着手"), (1, "進行中"), (2, "完了")],
+                default=0,
+                verbose_name="ステータス",
+            ),
         ),
     ]
