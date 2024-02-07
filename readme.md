@@ -28,3 +28,8 @@ $ python manage.py runserver
 ```shell
 $ python manage.py createsuperuser
 ```
+
+## blackの実行
+```shell
+$ black .
+```
