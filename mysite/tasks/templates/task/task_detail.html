@@ -15,7 +15,7 @@
         <li>
             <form action="{% url 'task_delete' task.id %}" method="post" style="display: inline;">
                 {% csrf_token %}
-                <button type="submit">削除</button>
+                <button type="submit" onclick="return confirm('本当に削除しますか？（この操作は取り消せません）')">削除</button>
             </form>
         </li>
     </ul>
