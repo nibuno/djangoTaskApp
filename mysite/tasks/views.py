@@ -12,6 +12,7 @@ class TaskListView(ListView):
     context_object_name = "tasks"
 
     def get_queryset(self):
+        # FIXME: 動的にGETパラメータを取得して、フィルタリングする
         # 何が終わっていないかを明確にしたいので、未着手と進行中のものを取得する
         return Task.objects.filter(status__in=[0, 1])
 
