@@ -11,6 +11,10 @@ class TaskListView(ListView):
     template_name = "task/task_list.html"
     context_object_name = "tasks"
 
+    def get_queryset(self):
+        # 何が終わっていないかを明確にしたいので、未着手と進行中のものを取得する
+        return Task.objects.filter(status__in=[0, 1])
+
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     login_url = "/login/"
