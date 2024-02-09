@@ -33,3 +33,8 @@ $ python manage.py createsuperuser
 ```shell
 $ black .
 ```
+
+## shell_plusの実行
+```shell
+$ python manage.py shell_plus
+```
