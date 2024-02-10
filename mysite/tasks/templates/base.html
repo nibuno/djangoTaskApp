@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>{% block title %}Task管理サイト{% endblock %}</title>
 </head>
+<header>
+    <p><a href="{% url 'task_list' %}">タスク管理サイト</a></p>
+    <nav>
+        <ul>
+            <li><a href="{% url 'task_create' %}">タスク作成</a></li>
+        </ul>
+    </nav>
+</header>
 <body>
 {% block content %}
 {% endblock %}
