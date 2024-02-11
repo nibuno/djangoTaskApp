@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import include, path
+from accounts.views import CreateUserView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,4 +26,5 @@ urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
     # TODO: TOPページを作成して、TOPページへのリダイレクトを設定する
     path("logout/", views.LogoutView.as_view(next_page="task_list"), name="logout"),
+    path("signup/", CreateUserView.as_view(), name="signup"),
 ]
