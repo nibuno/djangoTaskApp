@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ログイン</title>
-</head>
-<body>
-    <h2>ユーザー作成</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">作成</button>
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}アカウント作成{% endblock %}
+{% block content %}
+<h2>アカウント作成</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">作成</button>
+</form>
+{% endblock %}
