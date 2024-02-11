@@ -11,6 +11,14 @@
             <li><a href="{% url 'task_create' %}">タスク作成</a></li>
         </ul>
     </nav>
+    <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">ログアウト</a></li>
+        {% else %}
+        <li><a href="{% url 'signup' %}">新規登録</a></li>
+        <li><a href="{% url 'login' %}">ログイン</a></li>
+        {% endif %}
+    </ul>
 </header>
 <body>
 {% block content %}
