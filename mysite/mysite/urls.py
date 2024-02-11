@@ -23,7 +23,7 @@ from accounts.views import CreateUserView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("task/", include("tasks.urls")),
-    path("login/", views.LoginView.as_view(), name="login"),
+    path("login/", views.LoginView.as_view(next_page="task_list"), name="login"),
     # TODO: TOPページを作成して、TOPページへのリダイレクトを設定する
     path("logout/", views.LogoutView.as_view(next_page="task_list"), name="logout"),
     path("signup/", CreateUserView.as_view(), name="signup"),
