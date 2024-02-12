@@ -3,6 +3,10 @@
 {% block title %}Task一覧{% endblock %}
 {% block content %}
     <h1>Task List</h1>
+    <form method="get" action="{% url 'task_list' %}">
+        {{ search_form.title.label_tag }} {{ search_form.title }}
+        <button type="submit">検索</button>
+    </form>
     <ul>
         {% for task in tasks %}
             <li>

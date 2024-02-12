@@ -4,6 +4,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from .models import Task
+from .forms import TaskSearchForm
 
 
 class TaskListView(ListView):
@@ -12,9 +13,18 @@ class TaskListView(ListView):
     context_object_name = "tasks"
 
     def get_queryset(self):
-        # FIXME: 動的にGETパラメータを取得して、フィルタリングする
-        # 何が終わっていないかを明確にしたいので、未着手と進行中のものを取得する
-        return Task.objects.filter(status__in=[0, 1])
+        queryset = super().get_queryset()
+        title = self.request.GET.get('title')
+
+        if title:
+            queryset = queryset.filter(title__icontains=title)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = TaskSearchForm(self.request.GET or None)
+        return context
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
