@@ -5,6 +5,7 @@
     <h1>Task List</h1>
     <form method="get" action="{% url 'task_list' %}">
         {{ search_form.title.label_tag }} {{ search_form.title }}
+        {{ search_form.content.label_tag }} {{ search_form.content }}
         <button type="submit">検索</button>
     </form>
     <ul>

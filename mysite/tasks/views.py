@@ -15,9 +15,12 @@ class TaskListView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         title = self.request.GET.get("title")
+        content = self.request.GET.get("content")
 
         if title:
             queryset = queryset.filter(title__icontains=title)
+        if content:
+            queryset = queryset.filter(content__icontains=content)
 
         return queryset
 
