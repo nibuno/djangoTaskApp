@@ -22,12 +22,15 @@ class TaskListView(ListView):
 
         title = self.request.GET.get("title")
         content = self.request.GET.get("content")
+        status = self.request.GET.get("status")
 
         # FIXME: title, contentを1つの検索フォームで検索できるようにする
         if title:
             queryset = queryset.filter(title__icontains=title)
         if content:
             queryset = queryset.filter(content__icontains=content)
+        if status:
+            queryset = queryset.filter(status=status)
 
         return queryset
 
