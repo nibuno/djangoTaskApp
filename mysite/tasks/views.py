@@ -14,6 +14,12 @@ class TaskListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+
+        # 初期表示時は何をすべきか表示したいので未着手、進行中のタスクを表示する
+        if not self.request.GET:
+            queryset = queryset.filter(status__in=[0, 1])
+            return queryset
+
         title = self.request.GET.get("title")
         content = self.request.GET.get("content")
 
