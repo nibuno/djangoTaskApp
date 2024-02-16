@@ -11,3 +11,4 @@ class TaskSearchForm(forms.Form):
         choices=[("", "---------")] + list(STATUS_CHOICES),
         required=False,
     )
+    limit_date = forms.DateField(label="期限", required=False, widget=forms.DateInput(attrs={"type": "date"}))

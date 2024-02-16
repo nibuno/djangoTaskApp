@@ -23,6 +23,7 @@ class TaskListView(ListView):
         title = self.request.GET.get("title")
         content = self.request.GET.get("content")
         status = self.request.GET.get("status")
+        limit_date = self.request.GET.get("limit_date")
 
         # FIXME: title, contentを1つの検索フォームで検索できるようにする
         if title:
@@ -31,6 +32,8 @@ class TaskListView(ListView):
             queryset = queryset.filter(content__icontains=content)
         if status:
             queryset = queryset.filter(status=status)
+        if limit_date:
+            queryset = queryset.filter(limit_date=limit_date)
 
         return queryset
 
