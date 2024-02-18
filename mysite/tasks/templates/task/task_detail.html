@@ -5,7 +5,7 @@
     <h1>Task Detail</h1>
     <ul>
         <li>タイトル: {{ task.title }}</li>
-        <li>コンテンツ: {{ task.content }}</li>
+        <li>本文: {{ task.content }}</li>
         <li>期限: {% if task.limit_date == None %}(未設定){% else %}{{ task.limit_date }}{% endif %}</li>
         <li>作成日時: {{ task.created_at }}</li>
         <li>更新日時: {{ task.updated_at }}</li>
