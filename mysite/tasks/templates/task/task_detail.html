@@ -4,6 +4,7 @@
 {% block content %}
     <h1>Task Detail</h1>
     <ul>
+        {# FIXME: テキストをModelから出力できないか調べる（表記揺れを防ぐために） #}
         <li>タイトル: {{ task.title }}</li>
         <li>本文: {{ task.content }}</li>
         <li>期限: {% if task.limit_date == None %}(未設定){% else %}{{ task.limit_date }}{% endif %}</li>
