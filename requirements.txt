@@ -1,4 +1,6 @@
 django==4.2.9
+
+# FIXME: 本番環境では以下は分離させる
 django-extensions==3.2.3
 black==24.1.1
 mypy==1.8.0
