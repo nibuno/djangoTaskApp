@@ -33,7 +33,7 @@ class TaskListView(ListView):
         if status:
             queryset = queryset.filter(status=status)
         if limit_date:
-            queryset = queryset.filter(limit_date=limit_date)
+            queryset = queryset.filter(limit_date__lte=limit_date)
 
         return queryset
 
