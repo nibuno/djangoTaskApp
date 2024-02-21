@@ -38,3 +38,8 @@ $ black .
 ```shell
 $ python manage.py shell_plus
 ```
+
+### sqlを出力する際
+```shell
+$ python manage.py shell_plus --print-sql
+```
