@@ -6,6 +6,10 @@ from django.urls import reverse_lazy
 from .models import Task
 from .forms import TaskSearchForm
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
 
 class TaskListView(ListView):
     model = Task
@@ -58,6 +62,8 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         if form.is_valid():
             form.instance.created_user = self.request.user
             form.instance.updated_user = self.request.user
+
+            logging.info(f"TaskCreateView:post:form.instance: {form.instance}")
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
