@@ -75,6 +75,7 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("task_list")
 
     def get(self, request, *args, **kwargs):
+        logging.info(f"TaskDeleteView:get:request: {request}")
         return self.post(request, *args, **kwargs)
 
 
@@ -94,6 +95,9 @@ class TaskEditView(LoginRequiredMixin, UpdateView):
 
         task.updated_user = self.request.user
         task.save()
+
+        logging.info(f"TaskEditView:form_valid:task: {task}")
+
         return super().form_valid(form)
 
 
