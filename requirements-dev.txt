@@ -1,0 +1,13 @@
+django==4.2.9
+
+# 本番環境には不要なものを以下に配置する
+django-extensions==3.2.3
+black==24.1.1
+mypy==1.8.0
+django-stubs[compatible-mypy]==4.2.7
+pytest==8.0.1
+pytest-django==4.8.0
+factory-boy==3.3.0
+coverage==7.4.1
+pytest-cov==4.1.0
+freezegun==1.4.0
