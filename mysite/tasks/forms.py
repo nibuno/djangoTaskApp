@@ -5,11 +5,11 @@ from .statuses import STATUS_CHOICES
 class TaskSearchForm(forms.Form):
     title = forms.CharField(label="タイトル", required=False)
     content = forms.CharField(label="本文", required=False)
-    # FIXME: 初期画面遷移時にフィルタリングしている状況と合わない気がするのでレイアウト踏まえて修正検討
-    status = forms.ChoiceField(
+    status = forms.MultipleChoiceField(
         label="ステータス",
-        choices=[("", "---------")] + list(STATUS_CHOICES),
+        choices=STATUS_CHOICES,
         required=False,
+        widget=forms.CheckboxSelectMultiple,
     )
     limit_date = forms.DateField(
         label="期限", required=False, widget=forms.DateInput(attrs={"type": "date"})
