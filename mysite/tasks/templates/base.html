@@ -8,20 +8,22 @@
     {% tailwind_css %}
 </head>
 <header>
-    <p><a href="{% url 'task_list' %}">タスク管理サイト</a></p>
-    <nav>
-        <ul>
-            <li><a href="{% url 'task_create' %}">タスク作成</a></li>
-        </ul>
+    <nav class="w-full bg-red-50">
+        <div class="flex justify-between bg-blue-200 max-w-4xl mx-auto">
+            <p><a href="{% url 'task_list' %}">タスク管理サイト</a></p>
+            <ul>
+                <li><a href="{% url 'task_create' %}">タスク作成</a></li>
+            </ul>
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                {% else %}
+                <li><a href="{% url 'signup' %}">新規登録</a></li>
+                <li><a href="{% url 'login' %}">ログイン</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </nav>
-    <ul>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">ログアウト</a></li>
-        {% else %}
-        <li><a href="{% url 'signup' %}">新規登録</a></li>
-        <li><a href="{% url 'login' %}">ログイン</a></li>
-        {% endif %}
-    </ul>
 </header>
 <body>
 {% block content %}
