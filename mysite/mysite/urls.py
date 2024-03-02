@@ -27,4 +27,5 @@ urlpatterns = [
     # TODO: TOPページを作成して、TOPページへのリダイレクトを設定する
     path("logout/", views.LogoutView.as_view(next_page="task_list"), name="logout"),
     path("signup/", CreateUserView.as_view(), name="signup"),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]

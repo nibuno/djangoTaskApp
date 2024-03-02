@@ -11,3 +11,4 @@ factory-boy==3.3.0
 coverage==7.4.1
 pytest-cov==4.1.0
 freezegun==1.4.0
+django-tailwind[reload]==3.8.0
