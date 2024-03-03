@@ -2,24 +2,45 @@
 
 {% block title %}Task一覧{% endblock %}
 {% block content %}
-    <h1>Task List</h1>
-    <form method="get" action="{% url 'task_list' %}">
-        {{ search_form.title.label_tag }} {{ search_form.title }}
-        {{ search_form.content.label_tag }} {{ search_form.content }}
-        {{ search_form.status.label_tag }} {{ search_form.status }}
-        {{ search_form.limit_date.label_tag }} {{ search_form.limit_date }}
-        <button type="submit">検索</button>
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-4">Task List</h1>
+    <form method="get" action="{% url 'task_list' %}" class="mb-6">
+        <div class="flex flex-wrap -mx-2 mb-4">
+            <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
+                {{ search_form.title.label_tag }}
+                {{ search_form.title }}
+            </div>
+            <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
+                {{ search_form.content.label_tag }}
+                {{ search_form.content }}
+            </div>
+            <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
+                {{ search_form.status.label_tag }}
+                {{ search_form.status }}
+            </div>
+            <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
+                {{ search_form.limit_date.label_tag }}
+                {{ search_form.limit_date }}
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                検索
+            </button>
+        </div>
+
     </form>
-    <ul>
+    <ul class="mb-4">
         {% for task in tasks %}
-            <li>
-                <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
-                <p>{{ task.get_status_display }}</p>
+            <li class="mb-2">
+                <a href="{% url 'task_detail' task.id %}" class="text-blue-500 hover:text-blue-700">{{ task.title }}</a>
+                <p class="text-sm">{{ task.get_status_display }}</p>
             </li>
         {% endfor %}
     </ul>
     {% if tasks|length == 0 %}
         <p>Taskはありません</p>
     {% endif %}
-    <a href="{% url 'task_create' %}">Taskを作成する</a>
+    <a href="{% url 'task_create' %}">
+        タスク作成➕
+    </a>
+</div>
 {% endblock %}
