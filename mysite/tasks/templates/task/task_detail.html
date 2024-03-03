@@ -18,15 +18,15 @@
         <li class="mb-4">
             <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="{% url 'task_edit' task.id %}">編集</a>
         </li>
-        <li>
+        <li class="mb-4">
             <form action="{% url 'task_delete' task.id %}" method="post" style="display: inline;" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 transition duration-300 ease-in-out">
                 {% csrf_token %}
                 <button type="submit" onclick="return confirm('本当に削除しますか？（この操作は取り消せません）')">削除</button>
             </form>
         </li>
     </ul>
-    <button class="bg-gray-400 text-white rounded hover:bg-gray-700 transition duration-300 ease-in-out py-2 px-4">
-        <a href="{% url 'task_list' %}">戻る</a>
-    </button>
+    <a class="inline-block bg-gray-400 text-white rounded hover:bg-gray-700 transition duration-300 ease-in-out py-2 px-4" href="{% url 'task_list' %}">
+        戻る
+    </a>
 </div>
 {% endblock %}
