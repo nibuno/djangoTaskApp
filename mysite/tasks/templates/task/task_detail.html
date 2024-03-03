@@ -7,7 +7,9 @@
     <ul class="mb-4">
         {# FIXME: テキストをModelから出力できないか調べる（表記揺れを防ぐために） #}
         <li class="mb-2">タイトル: {{ task.title }}</li>
-        <li class="mb-2">本文: {{ task.content }}</li>
+        {# NOTE: break-wordsだけでは開業できないので、whitespace-pre-wrapを指定している #}
+        {#       https://zenn.dev/maztak/articles/7ec72edecfacd3 #}
+        <li class="mb-2 break-words whitespace-pre-wrap">本文: {{ task.content }}</li>
         <li class="mb-2">期限: {% if task.limit_date == None %}(未設定){% else %}{{ task.limit_date }}{% endif %}</li>
         <li class="mb-2">作成日時: {{ task.created_at }}</li>
         <li class="mb-2">更新日時: {{ task.updated_at }}</li>
