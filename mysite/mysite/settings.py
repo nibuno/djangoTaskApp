@@ -134,3 +134,21 @@ TAILWIND_APP_NAME = "tailwindcss"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+# 60:Django ORMでどんなSQLが発行されているか気にしよう
+# https://jisou-programmer.beproud.jp/DjangoORM%E3%81%A8%E3%81%AE%E4%BB%98%E3%81%8D%E5%90%88%E3%81%84%E6%96%B9/60-Django_ORM%E3%81%A7%E3%81%A9%E3%82%93%E3%81%AASQL%E3%81%8C%E7%99%BA%E8%A1%8C%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E6%B0%97%E3%81%AB%E3%81%97%E3%82%88%E3%81%86.html
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+    },
+}
