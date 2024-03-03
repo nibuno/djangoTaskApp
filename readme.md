@@ -43,3 +43,8 @@ $ python manage.py shell_plus
 ```shell
 $ python manage.py shell_plus --print-sql
 ```
+
+## tailwindcssのコンパイル
+```shell
+$ python manage.py tailwind start
+```
