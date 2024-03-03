@@ -13,7 +13,7 @@
             <div class="flex items-center">
                 <a href="{% url 'task_list' %}">タスク管理サイト</a>
             </div>
-            <a class="flex items-center px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-700 transition duration-300 ease-in-out" href="{% url 'task_create' %}">
+            <a class="flex items-center px-4 py-2 bg-gray-400 text-white font-bold rounded hover:bg-gray-700 transition duration-300 ease-in-out" href="{% url 'task_create' %}">
                 タスク作成
             </a>
             <div class="flex items-center">
@@ -21,14 +21,14 @@
                     <ul class="flex space-x-4">
                         {% if user.is_authenticated %}
                         <li>
-                            <a href="{% url 'logout' %}" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 transition duration-300 ease-in-out">ログアウト</a>
+                            <a href="{% url 'logout' %}" class="px-4 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-700 transition duration-300 ease-in-out">ログアウト</a>
                         </li>
                         {% else %}
                         <li>
-                            <a href="{% url 'signup' %}" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-300 ease-in-out">新規登録</a>
+                            <a href="{% url 'signup' %}" class="px-4 py-2 bg-green-500 text-white font-bold rounded hover:bg-green-700 transition duration-300 ease-in-out">新規登録</a>
                         </li>
                         <li>
-                            <a href="{% url 'login' %}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300 ease-in-out">ログイン</a>
+                            <a href="{% url 'login' %}" class="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300 ease-in-out">ログイン</a>
                         </li>
                         {% endif %}
                     </ul>
