@@ -2,10 +2,20 @@
 
 {% block title %}ログイン{% endblock %}
 {% block content %}
-<h2>ログイン画面</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">ログイン</button>
-</form>
+<div class="flex justify-center items-center h-screen">
+    <div class="w-full max-w-xs">
+        <h2 class="mb-6 text-center text-2xl font-bold">ログイン画面</h2>
+        <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            {% csrf_token %}
+            <div class="mb-4">
+                {{ form.as_p }}
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    ログイン
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
