@@ -4,7 +4,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from .models import Task
-from .forms import TaskSearchForm, TaskCreateForm
+from .forms import TaskSearchForm, TaskCreateForm, TaskEditForm
 
 import logging
 
@@ -82,7 +82,7 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 class TaskEditView(LoginRequiredMixin, UpdateView):
     login_url = "/login/"
     model = Task
-    fields = ["title", "content", "limit_date", "status"]
+    form_class = TaskEditForm
     template_name = "task/task_edit.html"
     success_url = reverse_lazy("task_list")
 

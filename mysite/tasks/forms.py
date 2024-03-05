@@ -22,5 +22,14 @@ class TaskCreateForm(forms.ModelForm):
         model = Task
         fields = ["title", "content", "limit_date", "status"]
         widgets = {
-            'limit_date': forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date'}),
+            "limit_date": forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
+        }
+
+
+class TaskEditForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ["title", "content", "limit_date", "status"]
+        widgets = {
+            "limit_date": forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
         }
