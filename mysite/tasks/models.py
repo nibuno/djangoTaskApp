@@ -12,6 +12,7 @@ class Task(models.Model):
     status = models.IntegerField(
         verbose_name="ステータス", choices=STATUS_CHOICES, default=0
     )
+    order = models.IntegerField(verbose_name="並び順", default=0)
     created_user = models.ForeignKey(
         to="auth.User",
         on_delete=models.PROTECT,
