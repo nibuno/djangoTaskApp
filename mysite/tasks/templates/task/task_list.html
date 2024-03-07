@@ -29,9 +29,15 @@
     </form>
     <ul class="mb-4">
         {% for task in tasks %}
-            <li class="mb-2">
+            <li class="mb-4">
                 <a href="{% url 'task_detail' task.id %}" class="text-blue-500 hover:text-blue-700">{{ task.title }}</a>
-                <p class="text-sm">{{ task.get_status_display }}</p>
+                {% if task.get_status_display == "未着手" %}
+                    <div class="text-sm bg-amber-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
+                {% elif task.get_status_display == "進行中" %}
+                    <div class="text-sm bg-blue-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
+                {% elif task.get_status_display == "完了" %}
+                    <div class="text-sm bg-green-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
