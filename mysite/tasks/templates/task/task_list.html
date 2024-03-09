@@ -27,11 +27,6 @@
             </button>
         </div>
     </form>
-    <div id="sort-save">
-        <button id="sort-save-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            並び順を保存
-        </button>
-    </div>
     <ul id="items" class="mb-4">
         {% for task in tasks %}
             <li id="{{ task.id }}" class="mb-4 sort-order-{{ task.order }}">
@@ -59,24 +54,23 @@
     const sortable = new Sortable(el, {
         animation: 150,
         ghostClass: 'blue-background-class',
-    });
 
-    const sortSaveButton = document.getElementById("sort-save-button");
-    sortSaveButton.addEventListener("click", function () {
-        {# 並び替えた番号順のidを保持する配列 #}
-        const sortedTaskIds = [];
-        const items = document.getElementById("items").children;
-        for (let i = 0; i < items.length; i++) {
-            sortedTaskIds.push(items[i].id);
+        onEnd: function () {
+            {# 並び替えた番号順のidを保持する配列 #}
+            const sortedTaskIds = [];
+            const items = document.getElementById("items").children;
+            for (let i = 0; i < items.length; i++) {
+                sortedTaskIds.push(items[i].id);
+            }
+            fetch("{% url "save_order" %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify(sortedTaskIds),
+            });
         }
-        fetch("{% url "save_order" %}", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": "{{ csrf_token }}"
-            },
-            body: JSON.stringify(sortedTaskIds),
-        });
     });
 
 </script>
