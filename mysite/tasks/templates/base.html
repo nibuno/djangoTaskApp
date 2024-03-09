@@ -17,18 +17,21 @@
                 タスク作成＋
             </a>
             <div class="flex items-center">
-                <div class="">
-                    <ul class="flex space-x-4">
-                        {% if user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'logout' %}" class="px-4 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-700 transition duration-300 ease-in-out">ログアウト</a>
-                        </li>
-                        {% else %}
-                        <li>
-                            <a href="{% url 'signup' %}" class="px-4 py-2 bg-green-500 text-white font-bold rounded hover:bg-green-700 transition duration-300 ease-in-out">新規登録</a>
-                        </li>
-                        {% endif %}
-                    </ul>
+                <div class="flex space-x-4">
+                    {% if user.is_authenticated %}
+                        <div id="hamburger-icon" class="flex flex-col justify-around w-6 h-6 cursor-pointer" onclick="toggleHamburgerMenu()">
+                            <div class="w-6 h-0.5 bg-black"></div>
+                            <div class="w-6 h-0.5 bg-black"></div>
+                            <div class="w-6 h-0.5 bg-black"></div>
+                            {# FIXME: 親要素の高さを取得して自動的にtopを指定したい #}
+                            <div id="hamburger-menu" class="absolute top-16 hidden">
+                                <a href="{% url 'logout' %}" class="px-4 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-700 transition duration-300 ease-in-out">ログアウト</a>
+                            </div>
+                        </div>
+
+                    {% else %}
+                        <a href="{% url 'signup' %}" class="px-4 py-2 bg-green-500 text-white font-bold rounded hover:bg-green-700 transition duration-300 ease-in-out">新規登録</a>
+                    {% endif %}
                 </div>
             </div>
 
@@ -39,4 +42,11 @@
 {% block content %}
 {% endblock %}
 </body>
+
+<script>
+    function toggleHamburgerMenu() {
+        var menu = document.getElementById("hamburger-menu");
+        menu.classList.toggle("hidden");
+    }
+</script>
 </html>
