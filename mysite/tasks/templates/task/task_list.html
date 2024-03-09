@@ -31,11 +31,11 @@
         {% for task in tasks %}
             <li id="{{ task.id }}" class="mb-4 sort-order-{{ task.order }}">
                 <a href="{% url 'task_detail' task.id %}" class="text-blue-500 hover:text-blue-700">{{ task.title }}</a>
-                {% if task.get_status_display == "未着手" %}
+                {% if task.get_status_display == "まだ" %}
                     <div class="text-sm bg-amber-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
-                {% elif task.get_status_display == "進行中" %}
+                {% elif task.get_status_display == "ぼちぼち" %}
                     <div class="text-sm bg-blue-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
-                {% elif task.get_status_display == "完了" %}
+                {% elif task.get_status_display == "おわった" %}
                     <div class="text-sm bg-green-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
                 {% endif %}
             </li>
