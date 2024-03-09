@@ -45,8 +45,24 @@
 
 <script>
     function toggleHamburgerMenu() {
-        var menu = document.getElementById("hamburger-menu");
+        const menu = document.getElementById("hamburger-menu");
         menu.classList.toggle("hidden");
     }
+    document.addEventListener("click", function(e) {
+        const menu = document.getElementById("hamburger-menu");
+        const hamburgerIcon = document.getElementById("hamburger-icon");
+
+        if (
+            !hamburgerIcon.contains(e.target)
+            && !menu.contains(e.target)
+            && !menu.classList.contains("hidden")
+        ) {
+            menu.classList.add("hidden");
+        }
+    });
+
+    document.getElementById("hamburger-icon").addEventListener("click", function(e) {
+        e.stopPropagation();
+    });
 </script>
 </html>
