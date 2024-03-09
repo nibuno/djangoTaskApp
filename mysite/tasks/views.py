@@ -1,10 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView, View
 from django.urls import reverse_lazy
 from .models import Task
 from .forms import TaskSearchForm, TaskCreateForm, TaskEditForm
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+import json
 
 import logging
 
@@ -21,7 +24,7 @@ class TaskListView(ListView):
 
         # 初期表示時は何をすべきか表示したいので未着手、進行中のタスクを表示する
         if not self.request.GET:
-            queryset = queryset.filter(status__in=[0, 1])
+            queryset = queryset.filter(status__in=[0, 1]).order_by("order")
             return queryset
 
         title = self.request.GET.get("title")
@@ -38,6 +41,8 @@ class TaskListView(ListView):
             queryset = queryset.filter(status__in=statuses)
         if limit_date:
             queryset = queryset.filter(limit_date__lte=limit_date)
+
+        queryset = queryset.order_by("order")
 
         return queryset
 
@@ -105,3 +110,21 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
     login_url = "/login/"
     model = Task
     template_name = "task/task_detail.html"
+
+
+@require_http_methods(["POST"])
+def save_order(request):
+    """タスクの並び順を保存する"""
+    try:
+        new_order = json.loads(request.body.decode("utf-8"))
+        for idx, task_id in enumerate(new_order):
+            task = Task.objects.get(pk=task_id)
+            if task.order == idx:
+                continue
+            task.order = idx
+            task.save()
+            logging.info("task_id: %s, new_order: %s", task_id, idx)
+        return JsonResponse({"status": "success", "new_order": new_order})
+    except Exception as e:
+        logging.exception("error")
+        return JsonResponse({"status": "error", "message": str(e)})

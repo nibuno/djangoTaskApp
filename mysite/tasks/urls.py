@@ -5,6 +5,7 @@ from .views import (
     TaskDeleteView,
     TaskEditView,
     TaskDetailView,
+    save_order,
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path("delete/<int:pk>", TaskDeleteView.as_view(), name="task_delete"),
     path("edit/<int:pk>", TaskEditView.as_view(), name="task_edit"),
     path("detail/<int:pk>", TaskDetailView.as_view(), name="task_detail"),
+    path("save_order/", save_order, name="save_order"),
 ]
