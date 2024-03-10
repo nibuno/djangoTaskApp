@@ -32,11 +32,11 @@
             <li id="{{ task.id }}" class="mb-4 sort-order-{{ task.order }}">
                 <a href="{% url 'task_detail' task.id %}" class="text-blue-500 hover:text-blue-700">{{ task.title }}</a>
                 {% if task.get_status_display == "まだ" %}
-                    <div class="text-sm bg-amber-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
+                    <div class="text-sm bg-mada text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
                 {% elif task.get_status_display == "ぼちぼち" %}
-                    <div class="text-sm bg-blue-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
+                    <div class="text-sm bg-botiboti text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
                 {% elif task.get_status_display == "おわった" %}
-                    <div class="text-sm bg-green-500 text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
+                    <div class="text-sm bg-owatta text-white font-bold py-1 px-3 rounded w-20 text-center">{{ task.get_status_display }}</div>
                 {% endif %}
             </li>
         {% endfor %}

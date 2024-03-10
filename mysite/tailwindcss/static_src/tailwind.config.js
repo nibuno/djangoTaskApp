@@ -42,7 +42,14 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                mada: '#f07f74',
+                botiboti: '#4187c8',
+                owatta: '#5ab5a7',
+
+            }
+        },
     },
     plugins: [
         /**
