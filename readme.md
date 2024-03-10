@@ -1,5 +1,6 @@
 Djangoで作成するTask管理アプリケーション
 
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 ## venvの作成と有効化
 ```shell
@@ -29,7 +30,12 @@ $ python manage.py runserver
 $ python manage.py createsuperuser
 ```
 
-## blackの実行
+## ruffの実行（format）
+```shell
+ruff format .
+```
+
+## blackの実行（ruffに置き換える予定）
 ```shell
 $ black .
 ```
