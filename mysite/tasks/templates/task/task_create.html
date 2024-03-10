@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Task作成{% endblock %}
+{% block title %}タスク作成{% endblock %}
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="text-2xl font-bold mb-4">Create Task Item</h1>
+    <h1 class="text-2xl font-bold mb-4">タスクを作成しよう</h1>
     <form method="post" class="mb-4">
         {% csrf_token %}
         <div class="mb-4">
-            <label for="id_title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+            <label for="id_title" class="block text-gray-700 text-sm font-bold mb-2">タイトル</label>
             {{ form.title }}
             {{ form.title.errors }}
         </div>
         <div class="mb-4">
-            <label for="id_content" class="block text-gray-700 text-sm font-bold mb-2">Content</label>
+            <label for="id_content" class="block text-gray-700 text-sm font-bold mb-2">本文</label>
             {{ form.content }}
             {{ form.content.errors }}
         </div>
         <div class="mb-4">
-            <label for="id_limit_date" class="block text-gray-700 text-sm font-bold mb-2">Limit Date</label>
+            <label for="id_limit_date" class="block text-gray-700 text-sm font-bold mb-2">期限</label>
             {{ form.limit_date }}
             {{ form.limit_date.errors }}
         </div>
         <div class="mb-4">
-            <label for="id_status" class="block text-gray-700 text-sm font-bold mb-2">Status</label>
+            <label for="id_status" class="block text-gray-700 text-sm font-bold mb-2">ステータス</label>
             {{ form.status }}
             {{ form.status.errors }}
         </div>
