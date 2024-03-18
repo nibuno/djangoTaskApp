@@ -54,3 +54,8 @@ $ python manage.py shell_plus --print-sql
 ```shell
 $ python manage.py tailwind start
 ```
+
+## dbshellの実行
+```shell
+$ python manage.py dbshell
+```
