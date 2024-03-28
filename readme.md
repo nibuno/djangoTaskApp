@@ -59,3 +59,13 @@ $ python manage.py tailwind start
 ```shell
 $ python manage.py dbshell
 ```
+
+## DBのdump
+```shell
+$ python manage.py dumpdata > db.json
+```
+
+## DBのload
+```shell
+$ python manage.py loaddata db.json
+```
