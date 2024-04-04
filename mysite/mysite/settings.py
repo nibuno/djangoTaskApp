@@ -25,7 +25,9 @@ SECRET_KEY = "django-insecure-y28$x^ac&q7e$_y-j!had7**n*coe^w_a#zpno(&5mky%#b(*m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# NOTE: Dockerで動かすためにはALLOWED_HOSTSを設定する必要があった
+# 理由について調べる
+ALLOWED_HOSTS = ["0.0.0.0"]
 
 
 # Application definition
