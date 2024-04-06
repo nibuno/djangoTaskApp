@@ -27,7 +27,7 @@ DEBUG = True
 
 # NOTE: Dockerで動かすためにはALLOWED_HOSTSを設定する必要があった
 # 理由について調べる
-ALLOWED_HOSTS = ["0.0.0.0"]
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
 
 # Application definition
