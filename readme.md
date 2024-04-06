@@ -69,3 +69,15 @@ $ python manage.py dumpdata > db.json
 ```shell
 $ python manage.py loaddata db.json
 ```
+
+## コンテナへの入り方
+
+web
+```shell
+docker compose exec web /bin/bash
+```
+
+db
+```shell
+docker compose exec db /bin/bash
+```
