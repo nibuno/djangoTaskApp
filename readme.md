@@ -35,39 +35,35 @@ $ python manage.py createsuperuser
 ruff format .
 ```
 
-## blackの実行（ruffに置き換える予定）
-```shell
-$ black .
-```
-
 ## shell_plusの実行
+## docker compose を利用して書き換える
 ```shell
-$ python manage.py shell_plus
+docker compose run web python mysite/manage.py shell_plus
 ```
 
 ### sqlを出力する際
 ```shell
-$ python manage.py shell_plus --print-sql
+docker compose run web python mysite/manage.py shell_plus --print-sql
 ```
 
 ## tailwindcssのコンパイル
 ```shell
-$ python manage.py tailwind start
+docker compose run web python mysite/manage.py tailwind start
 ```
 
 ## dbshellの実行
 ```shell
-$ python manage.py dbshell
+docker compose run web python mysite/manage.py dbshell
 ```
 
 ## DBのdump
 ```shell
-$ python manage.py dumpdata > db.json
+docker compose run web python mysite/manage.py dumpdata > db.json
 ```
 
 ## DBのload
 ```shell
-$ python manage.py loaddata db.json
+docker compose run web python mysite/manage.py loaddata db.json
 ```
 
 ## コンテナへの入り方
