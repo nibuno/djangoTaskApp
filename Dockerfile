@@ -10,3 +10,7 @@ COPY requirements/requirements-dev.txt /djangoTaskApp/
 RUN pip install -r requirements.txt
 RUN pip install -r requirements-dev.txt
 COPY . /djangoTaskApp/
+# dbshellを実行できるようにinstall
+# NOTE: psqlのversionが15系でPostgreSQLが16系のためdbshell実行時には
+# WARNINGが出るが、postgresql-client-16と指定してもパッケージがなく失敗するため、暫定的にpostgresql-clientをinstallしている
+RUN apt-get update && apt-get install -y postgresql-client
