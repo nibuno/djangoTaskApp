@@ -2,37 +2,30 @@ Djangoで作成するTask管理アプリケーション
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
-## venvの作成と有効化
+## dockerコンテナの起動
 ```shell
-$ python -m venv venv
-$ source venv/bin/activate
+docker compose up
 ```
 
 ## requirements.txtのインストール
 ```shell
-$ pip install -r requirements.txt
+docker compose run web pip install -r requirements/requirements.txt
+docker compose run web pip install -r requirements/requirements-dev.txt
 ```
 
 ## マイグレーション
 ```shell
-$ cd mysite
-$ python manage.py makemigrations
-$ python manage.py migrate
-```
-
-## 起動方法
-```shell
-$ python manage.py runserver
+docker compose run web python mysite/manage.py migrate
 ```
 
 ## 管理者ユーザー作成
 ```shell
-$ python manage.py createsuperuser
+docker compose run web python mysite/manage.py createsuperuser
 ```
 
 ## ruffの実行（format）
 ```shell
-ruff format .
+docker compose run web ruff format .
 ```
 
 ## shell_plusの実行
