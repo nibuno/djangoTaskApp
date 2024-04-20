@@ -114,7 +114,13 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
 
 @require_http_methods(["POST"])
 def save_order(request):
-    """タスクの並び順を保存する"""
+    """タスクの並び順を保存する
+
+    並び順が同じ場合、何もしない
+    並び順が異なる場合、新しい並び順を保存する
+
+    タスクの数が多い場合、処理時間がかかる可能性が高い
+    """
     try:
         new_order = json.loads(request.body.decode("utf-8"))
         for idx, task_id in enumerate(new_order):
