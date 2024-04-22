@@ -8,15 +8,15 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
-    username = factory.Faker("テストユーザー")
+    username = "テストユーザー"
 
 
 class TaskFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Task
 
-    title = factory.Faker("テストタイトル")
-    content = factory.Faker("テストコンテンツ")
+    title = "テストタイトル"
+    content = "テストコンテンツ"
     status = 0
     order = factory.Sequence(lambda n: n)
     created_user = factory.SubFactory(UserFactory)
