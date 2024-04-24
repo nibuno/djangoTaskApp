@@ -42,3 +42,37 @@ def test_create_task(client):
     assert task.content == "テストコンテンツ"
     assert task.limit_date == date(2024, 4, 23)
     assert task.status == 0
+
+
+@pytest.mark.django_db
+def test_edit_task(client):
+    # arrange
+    from .factories import TaskFactory
+
+    task = TaskFactory(
+        title="編集前タイトル",
+        content="編集前コンテンツ",
+        limit_date=date(2024, 4, 23),
+        status=0,
+    )
+
+    # act
+    url = reverse("task_edit", kwargs={"pk": task.pk})
+
+    response = client.post(
+        url,
+        {
+            "title": "編集後タイトル",
+            "content": "編集後コンテンツ",
+            "limit_date": "2024-04-24",
+            "status": 1,
+        },
+    )
+
+    # assert
+    assert response.status_code == 302
+    task.refresh_from_db()
+    assert task.title == "編集後タイトル"
+    assert task.content == "編集後コンテンツ"
+    assert task.limit_date == date(2024, 4, 24)
+    assert task.status == 1
