@@ -76,3 +76,21 @@ def test_edit_task(client):
     assert task.content == "編集後コンテンツ"
     assert task.limit_date == date(2024, 4, 24)
     assert task.status == 1
+
+
+@pytest.mark.django_db
+def test_delete_task(client):
+    # arrange
+    from .factories import TaskFactory
+
+    task = TaskFactory()
+
+    # act
+    url = reverse("task_delete", kwargs={"pk": task.pk})
+
+    response = client.post(url)
+
+    # assert
+    assert response.status_code == 302
+    assert Task.objects.count() == 0
+    assert not Task.objects.filter(pk=task.pk).exists()
