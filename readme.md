@@ -59,6 +59,15 @@ docker compose run web python mysite/manage.py dumpdata > db.json
 docker compose run web python mysite/manage.py loaddata db.json
 ```
 
+## pytestの実行
+webコンテナへログイン後に以下のコマンドを実行する
+# FIXME: 手間なので、cdせずに実行できるようにしたい
+# また、直接ファイル名を指定しているので指定せずに全体を実行できるようにしたい
+```shell
+cd mysite
+pytest tasks/tests.py 
+```
+
 ## コンテナへの入り方
 
 web
