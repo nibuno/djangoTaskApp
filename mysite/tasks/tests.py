@@ -94,3 +94,29 @@ def test_delete_task(client):
     assert response.status_code == 302
     assert Task.objects.count() == 0
     assert not Task.objects.filter(pk=task.pk).exists()
+
+
+@pytest.mark.django_db
+def test_first_list_view(client):
+    # arrange
+    from .factories import TaskFactory
+
+    task1 = TaskFactory(
+        status=0,
+    )
+    task2 = TaskFactory(
+        status=1,
+    )
+    TaskFactory(
+        status=2,
+    )
+
+    # act
+    url = reverse("task_list")
+    response = client.get(url)
+
+    # assert
+    assert response.status_code == 200
+    assert len(response.context["tasks"]) == 2
+    assert response.context["tasks"][0] == task1
+    assert response.context["tasks"][1] == task2
