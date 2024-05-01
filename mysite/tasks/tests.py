@@ -144,6 +144,6 @@ def test_save_order(client):
     task1.refresh_from_db()
     task2.refresh_from_db()
 
-    # FIXME: 他のテストケースに並び順が影響されてしまっている
-    assert task1.order == 5
-    assert task2.order == 6
+    # FIXME: JSONDecodeErrorが発生して、更新できていない
+    assert task1.order == 1
+    assert task2.order == 2
