@@ -1,3 +1,4 @@
+import json
 import pytest
 from django.urls import reverse
 from django.test import Client
@@ -133,10 +134,7 @@ def test_save_order(client):
     # act
     url = reverse("save_order")
     response = client.post(
-        url,
-        {
-            "order": [task2.pk, task1.pk],
-        },
+        url, json.dumps([task2.pk, task1.pk]), content_type="application/json"
     )
 
     # assert
@@ -144,6 +142,5 @@ def test_save_order(client):
     task1.refresh_from_db()
     task2.refresh_from_db()
 
-    # FIXME: JSONDecodeErrorが発生して、更新できていない
+    assert task2.order == 0
     assert task1.order == 1
-    assert task2.order == 2
