@@ -120,3 +120,30 @@ def test_first_list_view(client):
     assert len(response.context["tasks"]) == 2
     assert response.context["tasks"][0] == task1
     assert response.context["tasks"][1] == task2
+
+
+@pytest.mark.django_db
+def test_save_order(client):
+    # arrange
+    from .factories import TaskFactory
+
+    task1 = TaskFactory()
+    task2 = TaskFactory()
+
+    # act
+    url = reverse("save_order")
+    response = client.post(
+        url,
+        {
+            "order": [task2.pk, task1.pk],
+        },
+    )
+
+    # assert
+    assert response.status_code == 200
+    task1.refresh_from_db()
+    task2.refresh_from_db()
+
+    # FIXME: 他のテストケースに並び順が影響されてしまっている
+    assert task1.order == 5
+    assert task2.order == 6
