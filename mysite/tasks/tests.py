@@ -144,3 +144,26 @@ def test_save_order(client):
 
     assert task2.order == 0
     assert task1.order == 1
+
+
+@pytest.mark.django_db
+def test_save_order_not_change(client):
+    # arrange
+    from .factories import TaskFactory
+
+    task1 = TaskFactory(order=0)
+    task2 = TaskFactory(order=1)
+
+    # act
+    url = reverse("save_order")
+    response = client.post(
+        url, json.dumps([task2.pk, task1.pk]), content_type="application/json"
+    )
+
+    # assert
+    assert response.status_code == 200
+    task1.refresh_from_db()
+    task2.refresh_from_db()
+
+    assert task2.order == 0
+    assert task1.order == 1
