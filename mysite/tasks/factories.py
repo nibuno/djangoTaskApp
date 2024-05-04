@@ -18,7 +18,7 @@ class TaskFactory(factory.django.DjangoModelFactory):
     title = "テストタイトル"
     content = "テストコンテンツ"
     status = 0
-    order = factory.Sequence(lambda n: n)
+    order = 0
     created_user = factory.SubFactory(UserFactory)
     limit_date = factory.LazyFunction(datetime.date.today)
     updated_user = factory.SubFactory(UserFactory)
