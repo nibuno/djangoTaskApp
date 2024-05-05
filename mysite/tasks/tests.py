@@ -1,7 +1,6 @@
 import json
 import pytest
 from django.urls import reverse
-from django.test import Client
 from django.contrib.auth.models import User
 from .models import Task
 from datetime import date
@@ -13,8 +12,7 @@ def user():
 
 
 @pytest.fixture
-def client(user):
-    client = Client()
+def client(user, client):
     client.force_login(user)
     return client
 
