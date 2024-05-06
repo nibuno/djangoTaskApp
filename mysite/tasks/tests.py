@@ -123,6 +123,10 @@ def test_first_list_view(client):
 
 @pytest.mark.django_db
 def test_save_order(client):
+    """並び順が適切に保存されることを確認する
+
+    FIXME: parametrizeでtest_save_order_not_changeと一緒に書き直す
+    """
     # arrange
     from .factories import TaskFactory
 
@@ -146,6 +150,10 @@ def test_save_order(client):
 
 @pytest.mark.django_db
 def test_save_order_not_change(client):
+    """並び順が変更されないことを確認する
+
+    FIXME: parametrizeでtest_save_orderと一緒に書き直す
+    """
     # arrange
     from .factories import TaskFactory
 
