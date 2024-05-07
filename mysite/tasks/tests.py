@@ -173,3 +173,15 @@ def test_save_order_not_change(client):
 
     assert task2.order == 0
     assert task1.order == 1
+
+
+@pytest.mark.django_db
+def test_save_order_http_method_get(client):
+    # arrange
+    url = reverse("save_order")
+
+    # act
+    response = client.get(url)
+
+    # assert
+    assert response.status_code == 405
