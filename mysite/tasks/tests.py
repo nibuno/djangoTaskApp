@@ -67,14 +67,14 @@ def test_edit_task(client):
             "status": 1,
         },
     )
+    actual = Task.objects.get(pk=task.pk)
 
     # assert
     assert response.status_code == 302
-    task.refresh_from_db()
-    assert task.title == "編集後タイトル"
-    assert task.content == "編集後コンテンツ"
-    assert task.limit_date == date(2024, 4, 24)
-    assert task.status == 1
+    assert actual.title == "編集後タイトル"
+    assert actual.content == "編集後コンテンツ"
+    assert actual.limit_date == date(2024, 4, 24)
+    assert actual.status == 1
 
 
 @pytest.mark.django_db
