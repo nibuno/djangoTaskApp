@@ -33,11 +33,11 @@ def test_create_task(client):
             "status": 0,
         },
     )
+    task = Task.objects.first()
 
     # assert
     assert response.status_code == 302
     assert Task.objects.count() == 1
-    task = Task.objects.first()
     assert task.title == "テストタイトル"
     assert task.content == "テストコンテンツ"
     assert task.limit_date == date(2024, 4, 23)
