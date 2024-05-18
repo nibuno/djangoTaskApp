@@ -14,3 +14,7 @@ COPY . /djangoTaskApp/
 # NOTE: psqlのversionが15系でPostgreSQLが16系のためdbshell実行時には
 # WARNINGが出るが、postgresql-client-16と指定してもパッケージがなく失敗するため、暫定的にpostgresql-clientをinstallしている
 RUN apt-get update && apt-get install -y postgresql-client
+
+RUN apt-get update && apt-get install -y \
+    sqlite3 \
+    && rm -rf /var/lib/apt/lists/*
