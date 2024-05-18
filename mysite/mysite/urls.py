@@ -21,6 +21,7 @@ from django.urls import include, path
 from accounts.views import CreateUserView
 
 urlpatterns = [
+    path('__debug__/', include("debug_toolbar.urls")),
     path("admin/", admin.site.urls),
     path("task/", include("tasks.urls")),
     path("login/", views.LoginView.as_view(next_page="task_list"), name="login"),
