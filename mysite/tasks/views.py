@@ -62,6 +62,8 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def post(self, request, *args, **kwargs):
         # NOTE: これを設定しないと、self.form_invalid(form)でエラーが発生する
         #       どういう風にすべきなのか、このままで良いのかは調査する
+        #       https://docs.djangoproject.com/ja/4.2/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_context_data
+        #       get_context_data() だけど、こういうの関係あるかな？
         self.object = None
         form = self.get_form()
         if form.is_valid():
